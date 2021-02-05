@@ -13,6 +13,7 @@ namespace OutlookAddIn2
             InitAsync();
             this.Resize += new System.EventHandler(this.Form_Resize);
             this.FormClosed += Form1_FormClosed;
+            this.FormClosing += Form1_FormClosing;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -40,6 +41,15 @@ namespace OutlookAddIn2
         private void Form_Resize(object sender, EventArgs e)
         {
             webView.Size = this.ClientSize - new System.Drawing.Size(webView.Location);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (webView != null && !webView.IsDisposed)
+            {
+                webView.Visible = false;
+                webView.Dispose();   // <---System.NullReferenceException: 'Object reference not set to an instance of an object'
+            }
         }
     }
 }
