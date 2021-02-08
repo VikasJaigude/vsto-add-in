@@ -17,7 +17,9 @@ namespace OutlookAddIn2
             //dlg.ShowDialog();
             if (IsWebViewVersionInstalled())
             {
-                Form1 dlg = new Form1();
+                //Form1 dlg = new Form1();
+                //dlg.ShowDialog();
+                Form3 dlg = new Form3();
                 dlg.ShowDialog();
             }
             else
